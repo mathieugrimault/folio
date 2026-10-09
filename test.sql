@@ -1,29 +1,30 @@
---metadb:function get_count_user_group
-DROP FUNCTION IF EXISTS get_count_user_group;
-CREATE FUNCTION get_count_user_group(
-    param_user_group TEXT DEFAULT ''
+--metadb:function get_test
+DROP FUNCTION IF EXISTS get_test;
+CREATE FUNCTION get_test(
+    param_emplacement TEXT DEFAULT '',
+    param_rcr TEXT DEFAULT '',
 )
 RETURNS TABLE (
-    group_id          TEXT,
-    group_description TEXT,
-    group_name        TEXT,
-    count_by_group    BIGINT    
+    instance_uuid     TEXT,
 )
-AS 
+AS
 $$
-SELECT  
-    users__t.patron_group :: TEXT,
-    groups__t.DESC        :: TEXT,
-    groups__t.group       :: TEXT,
-    COUNT(users__t.id)    :: BIGINT
+SELECT DISTINCT ihi.instance_id
 FROM
-    folio_users.users__t  
-    LEFT JOIN folio_users.groups__t ON groups__t.id = users__t.patron_group
-WHERE 
-    ((groups__t.group = param_user_group) OR (param_user_group = ''))
-GROUP BY 
-    users__t.patron_group,
-    groups__t.desc,
-    groups__t.group
+    folio_derived.items_holdings_instances ihi,
+    folio_derived.locations_libraries l,
+    folio_inventory.holdings_record__t hrt
+WHERE
+    ihi.holdings_id = hrt.id
+    and hrt.effective_location_id = l.location_id
+    and l.location_code = param_emplacement
+    AND NOT EXISTS (
+      SELECT 1
+      FROM folio_source_record.marc__t m
+      WHERE m.instance_id = ihi.instance_id
+        AND m.field = '930'
+        AND m.sf = '5'
+        AND m.content LIKE param_rcr+':%'
+    );
 $$
 LANGUAGE SQL STABLE;;
