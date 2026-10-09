@@ -5,11 +5,11 @@ CREATE FUNCTION get_test(
     param_rcr TEXT DEFAULT ''
 )
 RETURNS TABLE (
-    instance_uuid TEXT,
+    instance_uuid UUID,
 )
 AS
 $$
-SELECT DISTINCT ihi.instance_id :: TEXT
+SELECT DISTINCT ihi.instance_id
 FROM
     folio_derived.items_holdings_instances ihi,
     folio_derived.locations_libraries l,
@@ -27,4 +27,4 @@ WHERE
         AND m.content LIKE CONCAT(param_rcr, ':%')
     )
 $$
-LANGUAGE SQL STABLE;;
+LANGUAGE SQL STABLE;
