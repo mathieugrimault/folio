@@ -5,11 +5,11 @@ CREATE FUNCTION get_test(
     param_rcr TEXT DEFAULT ''
 )
 RETURNS TABLE (
-    instance_uuid     TEXT,
+    instance_uuid TEXT,
 )
 AS
 $$
-SELECT DISTINCT ihi.instance_id
+SELECT DISTINCT ihi.instance_id :: TEXT
 FROM
     folio_derived.items_holdings_instances ihi,
     folio_derived.locations_libraries l,
