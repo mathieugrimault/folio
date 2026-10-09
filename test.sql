@@ -5,7 +5,7 @@ CREATE FUNCTION get_testaa(
     param_rcr TEXT DEFAULT ''
 )
 RETURNS TABLE (
-    instance_uuid UUID,
+    instance_uuid UUID
 )
 AS
 $$
