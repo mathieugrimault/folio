@@ -17,14 +17,14 @@ FROM
 WHERE
     ihi.holdings_id = hrt.id
     and hrt.effective_location_id = l.location_id
-    and l.location_code = param_emplacement
+    and l.location_code = 'CRHIA'
     AND NOT EXISTS (
       SELECT 1
       FROM folio_source_record.marc__t m
       WHERE m.instance_id = ihi.instance_id
         AND m.field = '930'
         AND m.sf = '5'
-        AND m.content LIKE CONCAT(param_rcr, ':%')
+        AND m.content LIKE '441092202'
     )
 $$
 LANGUAGE SQL STABLE;
