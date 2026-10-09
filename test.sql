@@ -25,6 +25,6 @@ WHERE
         AND m.field = '930'
         AND m.sf = '5'
         AND m.content LIKE CONCAT(param_rcr, ':%')
-    );
+    )
 $$
 LANGUAGE SQL STABLE;;
