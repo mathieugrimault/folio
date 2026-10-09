@@ -1,10 +1,6 @@
 {
     "displayName": "Requête qualité : holding pas mis dans le Sudoc",
-    "description": "Pour une paire emplacement Folio (sans précision) / RCR, sortir les PPN
-des notices pour lesquelles il y a un holding Folio qui a cet
-emplacement (chercher uniquement sur ceux créés depuis le 1er janvier
-2025, pour éviter une recherche sur tout le catalogue d'avant la
-migration) mais pas de 930 $5 qui a ce RCR.",
+    "description": "Pour une paire emplacement Folio (sans précision) / RCR, sortir les PPN des notices pour lesquelles il y a un holding Folio qui a cet emplacement (chercher uniquement sur ceux créés depuis le 1er janvier 2025, pour éviter une recherche sur tout le catalogue d'avant la migration) mais pas de 930 $5 qui a ce RCR.",
     "instructions": "Saisissez un emplacement (ex : INSPEA) et un RCR (ex : 441092208)",
     "parameters": [
         {
