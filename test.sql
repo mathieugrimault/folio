@@ -2,7 +2,7 @@
 DROP FUNCTION IF EXISTS get_test;
 CREATE FUNCTION get_test(
     param_emplacement TEXT DEFAULT '',
-    param_rcr TEXT DEFAULT '',
+    param_rcr TEXT DEFAULT ''
 )
 RETURNS TABLE (
     instance_uuid     TEXT,
