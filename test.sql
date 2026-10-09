@@ -1,6 +1,6 @@
---metadb:function get_test
-DROP FUNCTION IF EXISTS get_test;
-CREATE FUNCTION get_test(
+--metadb:function get_testaa
+DROP FUNCTION IF EXISTS get_testaa;
+CREATE FUNCTION get_testaa(
     param_emplacement TEXT DEFAULT '',
     param_rcr TEXT DEFAULT ''
 )
