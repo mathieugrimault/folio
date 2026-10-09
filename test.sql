@@ -24,7 +24,7 @@ WHERE
       WHERE m.instance_id = ihi.instance_id
         AND m.field = '930'
         AND m.sf = '5'
-        AND m.content LIKE param_rcr+':%'
+        AND m.content LIKE CONCAT(param_rcr, ':%')
     );
 $$
 LANGUAGE SQL STABLE;;
