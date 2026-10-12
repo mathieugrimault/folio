@@ -5,11 +5,16 @@ CREATE FUNCTION get_testaa(
     param_rcr TEXT DEFAULT ''
 )
 RETURNS TABLE (
-    instance_uuid UUID
+    instance_uuid UUID,
+    item_status TEXT,
+    identifier TEXT
 )
 AS
 $$
-SELECT DISTINCT ihi.instance_id, ihi.item_id, i.jsonb -> 'status' ->> 'name' as item_status, ii.identifier
+SELECT DISTINCT
+    ihi.instance_id,
+    ihi.item_id, i.jsonb -> 'status' ->> 'name' as item_status,
+    ii.identifier
 FROM
     folio_derived.items_holdings_instances ihi,
     folio_derived.locations_libraries l,
