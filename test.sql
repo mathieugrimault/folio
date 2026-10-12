@@ -6,14 +6,16 @@ CREATE FUNCTION get_testaa(
 )
 RETURNS TABLE (
     instance_uuid UUID,
+    item_uuid UUID,
     item_status TEXT,
-    identifier TEXT
+    ppn TEXT
 )
 AS
 $$
 SELECT DISTINCT
     ihi.instance_id,
-    ihi.item_id, i.jsonb -> 'status' ->> 'name' as item_status,
+    ihi.item_id,
+    i.jsonb -> 'status' ->> 'name' as item_status,
     ii.identifier
 FROM
     folio_derived.items_holdings_instances ihi,
