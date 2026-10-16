@@ -5,22 +5,12 @@ CREATE FUNCTION get_pne(
     param_loandate TEXT DEFAULT ''
 )
 RETURNS TABLE (
-    user_uuid UUID,
-    code_barres TEXT,
-    nom TEXT,
-    prenom TEXT,
-    date_dernier_pret TEXT,
-    date_expiration TEXT
+    user_uuid UUID
 )
 AS
 $$
 select
-    ut.id as user_uuid,
-    ut.jsonb -> 'barcode' as code_barres,
-    ut.jsonb -> 'personal' ->> 'lastName' as nom,
-    ut.jsonb -> 'personal' ->> 'firstName' as prenom,
-    to_char(max(li.loan_date), 'DD-MM-YYYY') as date_dernier_pret,
-    ut.jsonb -> 'expirationDate' as date_expiration
+    ut.id as user_uuid
 from
     folio_derived.loans_items li,
     folio_users.users__ ut
