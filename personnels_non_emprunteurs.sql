@@ -9,8 +9,8 @@ RETURNS TABLE (
     code_barres TEXT,
     nom TEXT,
     prenom TEXT,
-    date_dernier_pret timestampz,
-    date_expiration timestampz
+    date_dernier_pret TEXT,
+    date_expiration TEXT
 )
 AS
 $$
@@ -19,8 +19,8 @@ select
     jsonb_extract_path_text(ut.jsonb, 'barcode') as code_barres,
     jsonb_extract_path_text(ut.jsonb, 'personal', 'lastName') as nom,
     jsonb_extract_path_text(ut.jsonb, 'personal', 'firstName') as prenom,
-    max(li.loan_date) as date_dernier_pret,
-    jsonb_extract_path_text(ut.jsonb, 'expirationDate') as date_expiration
+    to_char(max(li.loan_date), 'DD-MM-YYYY') as date_dernier_pret,
+    to_char(jsonb_extract_path_text(ut.jsonb, 'expirationDate'), 'DD-MM-YYYY') as date_expiration
 from
     folio_derived.loans_items li,
     folio_users.users__ ut
