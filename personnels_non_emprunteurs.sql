@@ -27,10 +27,10 @@ from
 where
     li.user_id = ut.id
     and ut.__current = true
-    and jsonb_extract_path_text(ut.jsonb, 'customFields', 'etablissement') = 'opt_1' -- Centrale
-    and jsonb_extract_path_text(ut.jsonb, 'patronGroup') = '3684a786-6671-4268-8ed0-9db82ebca60b' -- Personnel
+    and jsonb_extract_path_text(ut.jsonb, 'customFields', 'etablissement') = param_etablissement
+    and jsonb_extract_path_text(ut.jsonb, 'patronGroup') = '3684a786-6671-4268-8ed0-9db82ebca60b'
     and jsonb_extract_path_text(ut.jsonb, 'active') = 'true'
-    and not li.loan_date >= '2026-01-01'
+    and not li.loan_date >= param_date
 group by
     user_uuid, code_barres, nom, prenom, date_expiration
 order by
