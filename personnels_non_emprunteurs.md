@@ -14,7 +14,7 @@ Valeurs opt_X :
 |Parameter|Position|Type|Default value|Sample input|
 |---|---|---|---|---|
 |param_etablissement|1|TEXT|''|Code d'un établissement, ex : opt_1|
-|param_date|2|TEXT|''|Date seuil, ex : 2026-01-01|
+|param_loandate|2|TEXT|''|Date seuil, ex : 2026-01-01|
 
 ## Output table
 
