@@ -10,7 +10,7 @@ RETURNS TABLE (
     nom TEXT,
     prenom TEXT,
     date_dernier_pret timestampz,
-    date_expiration timestampz,
+    date_expiration timestampz
 )
 AS
 $$
