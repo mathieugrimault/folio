@@ -1,6 +1,6 @@
 --metadb:function get_personnels_non_emprunteurs
-DROP FUNCTION IF EXISTS get_pne;
-CREATE FUNCTION get_pne(
+DROP FUNCTION IF EXISTS get_personnels_non_emprunteurs;
+CREATE FUNCTION get_personnels_non_emprunteurs(
     param_etablissement TEXT DEFAULT '',
     param_loandate TEXT DEFAULT ''
 )
