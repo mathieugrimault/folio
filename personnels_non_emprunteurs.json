@@ -1,7 +1,7 @@
 {
     "displayName": "Personnels plus emprunteurs depuis...",
     "description": "Liste les Personnels n'ayant pas emprunté depuis le [AAAA-MM-JJ], actifs et appartenant à l'établissement opt_X.",
-    "instructions": "Saisissez le code d'un établissement (ex : opt_0) et une date (ex : 2026-01-01)",
+    "instructions": "Saisissez le code d'un établissement (NU = opt_0, CN = opt_1, BA = opt_2) et une date (ex : 2026-01-01)",
     "parameters": [
         {
             "name": "param_etablissement",

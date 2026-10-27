@@ -19,7 +19,7 @@ select
     ut.jsonb -> 'barcode' as code_barres,
     ut.jsonb -> 'personal' ->> 'lastName' as nom,
     ut.jsonb -> 'personal' ->> 'firstName' as prenom,
-    to_char(max(li.loan_date), 'DD-MM-YYYY') as date_dernier_pret,
+    max(li.loan_date) as date_dernier_pret,
     ut.jsonb -> 'expirationDate' as date_expiration
 from
     folio_derived.loans_items li,
