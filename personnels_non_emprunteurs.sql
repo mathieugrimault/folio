@@ -9,7 +9,7 @@ RETURNS TABLE (
     code_barres TEXT,
     nom TEXT,
     prenom TEXT,
-    date_dernier_pret TIMESTAMPZ,
+    date_dernier_pret TIMESTAMP,
     date_expiration TEXT
 )
 AS
