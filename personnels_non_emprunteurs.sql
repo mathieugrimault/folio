@@ -10,30 +10,30 @@ RETURNS TABLE (
     nom TEXT,
     prenom TEXT,
     date_dernier_pret TIMESTAMP,
-    date_expiration DATE
+    date_expiration TEXT
 )
 AS
 $$
 select
     ut.id as user_uuid,
-    ut.jsonb -> 'barcode' as code_barres,
-    ut.jsonb -> 'personal' ->> 'lastName' as nom,
-    ut.jsonb -> 'personal' ->> 'firstName' as prenom,
+    jsonb_extract_path_text(ut.jsonb, 'barcode') as code_barres,
+    jsonb_extract_path_text(ut.jsonb, 'personal', 'lastName') as nom,
+    jsonb_extract_path_text(ut.jsonb, 'personal', 'firstName') as prenom,
     to_char(max(li.loan_date), 'DD-MM-YYYY') as date_dernier_pret,
-    (ut.jsonb -> 'expirationDate')::date as date_expiration
+    jsonb_extract_path_text(ut.jsonb, 'expirationDate') as date_expiration
 from
     folio_derived.loans_items li,
     folio_users.users__ ut
 where
     li.user_id = ut.id
     and ut.__current = true
-    and ut.jsonb -> 'customFields' ->> 'etablissement' = param_etablissement
-    and ut.jsonb -> 'patronGroup' = '3684a786-6671-4268-8ed0-9db82ebca60b'
-    and ut.jsonb -> 'active' = 'true'
+    and jsonb_extract_path_text(ut.jsonb, 'customFields', 'etablissement') = param_etablissement
+    and jsonb_extract_path_text(ut.jsonb, 'patronGroup') = '3684a786-6671-4268-8ed0-9db82ebca60b'
+    and jsonb_extract_path_text(ut.jsonb, 'active') = 'true'
     and not li.loan_date >= param_loandate
 group by
     user_uuid, code_barres, nom, prenom, date_expiration
 order by
-    nom, prenom, date_expiration;
+    nom, prenom, date_expiration ;
 $$
 LANGUAGE SQL STABLE;
