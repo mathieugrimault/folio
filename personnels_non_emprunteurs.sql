@@ -10,7 +10,7 @@ RETURNS TABLE (
     nom TEXT,
     prenom TEXT,
     date_dernier_pret TIMESTAMP,
-    date_expiration TEXT
+    date_expiration DATE
 )
 AS
 $$
@@ -20,7 +20,7 @@ select
     ut.jsonb -> 'personal' ->> 'lastName' as nom,
     ut.jsonb -> 'personal' ->> 'firstName' as prenom,
     to_char(max(li.loan_date), 'DD-MM-YYYY') as date_dernier_pret,
-    (ut.jsonb -> 'expirationDate') as date as date_expiration
+    (ut.jsonb -> 'expirationDate')::date as date_expiration
 from
     folio_derived.loans_items li,
     folio_users.users__ ut
