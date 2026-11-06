@@ -42,6 +42,6 @@ where
     and cl.jsonb ->> 'object' = 'N/A'
     and cl.jsonb ->> 'description' = 'Item status: Available.'
     and cl.jsonb ->> 'source' = 'Cornuault, Céline'
-    and cl.__start::date BETWEEN '2026-10-30 06:00:00' and '2026-10-30 23:00:00';
+    and cl.__start::date BETWEEN param_mindate and param_maxdate;
 $$
 LANGUAGE SQL STABLE;
