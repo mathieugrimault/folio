@@ -42,8 +42,8 @@ where
     and cl.jsonb ->> 'object' = 'N/A'
     and cl.jsonb ->> 'description' = 'Item status: Available.'
     and (param_source IS NULL OR cl.jsonb ->> 'source' = param_source)
-    and cl.__start::date BETWEEN param_mindate::date and param_maxdate::date;
+    and cl.__start::date BETWEEN param_mindate::date and param_maxdate::date
 order by
-    cl.__start ASC
+    cl.__start ASC, source ASC;
 $$
 LANGUAGE SQL STABLE;
