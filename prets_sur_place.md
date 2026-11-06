@@ -1,10 +1,10 @@
 # Prêts sur place
 
 ## Purpose
-Extraction des prêts sur place entre date_min 06h00 et date_max 23h00 et optionnellement par l'opérateur 'Jean, Toto'.
+Extraction des prêts sur place entre date_min et date_max et optionnellement par l'opérateur 'Totovitch, Jean'.
 
 Format des dates : AAAA-MM-JJ
-Format pour opérateur : 'Jean, Toto', attention à respecter les majuscules, l'espace et la virgule !
+Format pour opérateur : 'Totovitch, Jean', attention à respecter les majuscules, l'espace et la virgule !
 
 ## Parameters
 

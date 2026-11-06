@@ -19,7 +19,7 @@ AS
 $$
 select
     cl.jsonb ->> 'source' as operateur,
-    to_char(cl.__start, 'YYYY-MM-DD HH:MM') as date,
+    to_char(cl.__start, 'YYYY-MM-DD HH24:MI') as date,
     ihi.title as titre,
     ihi.item_level_call_number as cote,
     ihi.barcode as codebarres,
