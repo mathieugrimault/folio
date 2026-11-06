@@ -1,7 +1,7 @@
 {
     "displayName": "Prêts sur place",
-    "description": "Prêts sur place entre le [AAAA-MM-JJ] 06h00 et le [AAAA-MM-JJ] 23h00, optionnellement par l'opérateur Jean, Toto",
-    "instructions": "Saisissez une date min et une date max (ex : 2026-01-01)",
+    "description": "Prêts sur place entre le [AAAA-MM-JJ] et le [AAAA-MM-JJ], optionnellement par l'opérateur Jean, Toto",
+    "instructions": "Saisissez une date min et une date max (ex : '2026-01-01'), format pour opérateur : 'Jean, Toto', attention à respecter les majuscules, l'espace et la virgule !",
     "parameters": [
         {
             "name": "param_source",
