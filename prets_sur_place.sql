@@ -1,7 +1,7 @@
 --metadb:function get_pret_sur_place
 DROP FUNCTION IF EXISTS get_pret_sur_place;
 CREATE FUNCTION get_pret_sur_place(
-    param_source TEXT DEFAULT '',
+    param_source TEXT DEFAULT NULL,
     param_mindate TEXT DEFAULT '',
     param_maxdate TEXT DEFAULT ''
 )
@@ -41,7 +41,7 @@ where
     and cl.jsonb -> 'userBarcode' is null
     and cl.jsonb ->> 'object' = 'N/A'
     and cl.jsonb ->> 'description' = 'Item status: Available.'
-    and cl.jsonb ->> 'source' = 'Cornuault, Céline'
+    and (param_source IS NULL OR cl.jsonb ->> 'source' = param_source)
     and cl.__start::date BETWEEN param_mindate::date and param_maxdate::date;
 $$
 LANGUAGE SQL STABLE;
