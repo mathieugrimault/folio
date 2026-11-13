@@ -7,7 +7,7 @@ CREATE FUNCTION get_inscriptions_ext_mois_site(
 RETURNS TABLE (
     mois TEXT,
     bibliotheque TEXT,
-    inscriptions TEXT
+    inscriptions INTEGER
 )
 AS
 $$
