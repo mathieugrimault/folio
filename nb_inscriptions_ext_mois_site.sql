@@ -2,7 +2,7 @@
 set lc_time to 'fr_FR';
 DROP FUNCTION IF EXISTS get_inscriptions_ext_mois_site;
 CREATE FUNCTION get_inscriptions_ext_mois_site(
-    param_annee TEXT DEFAULT '2026'
+    param_annee INTEGER DEFAULT 2026
 )
 RETURNS TABLE (
     mois TEXT,

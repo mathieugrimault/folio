@@ -7,7 +7,7 @@ Nombre de lecteurs extérieurs (et temporaires) inscrits par mois et par site
 
 |Parameter|Position|Type|Default value|Sample input|
 |---|---|---|---|---|
-|param_annee|1|TEXT|'2026'|Année, ex : 2026|
+|param_annee|1|INTEGER|2026|Année, ex : 2026|
 
 ## Output table
 

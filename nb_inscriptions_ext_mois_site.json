@@ -6,7 +6,7 @@
         {
             "name": "param_annee",
             "displayName": "Année",
-            "type": "text",
+            "type": "integer",
             "required": true
         }
     ]
