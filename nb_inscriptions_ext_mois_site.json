@@ -1,0 +1,13 @@
+{
+    "displayName": "Nombre de lecteurs extérieurs (et temporaires) inscrits par mois et par site",
+    "description": "Nombre de lecteurs extérieurs (et temporaires) inscrits par mois et par site",
+    "instructions": "Saisissez une année, ex : 2026",
+    "parameters": [
+        {
+            "name": "param_annee",
+            "displayName": "Année",
+            "type": "text",
+            "required": true
+        }
+    ]
+}
