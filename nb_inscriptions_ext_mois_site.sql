@@ -11,6 +11,7 @@ RETURNS TABLE (
 )
 AS
 $$
+set lc_time to 'fr_FR';
 WITH params AS (
     SELECT param_annee AS annee
 ),
@@ -23,6 +24,11 @@ SELECT
         'TMMonth'
     ) AS mois,
     COALESCE(spt.name, 'Non renseigné') AS bibliotheque,
+    case ut.patron_group
+        when '503a81cd-6c26-400f-b620-14c08943697c' then 'Extérieurs'
+        when '59c0490d-9d96-4ea8-9bcc-43e5a63002e6' then 'Temporaire'
+        else 'erreur'
+    end as Groupe,
     COUNT(DISTINCT ut.id) AS inscriptions
 FROM months m
 CROSS JOIN params p
@@ -40,7 +46,8 @@ LEFT JOIN folio_inventory.service_point__t spt
 GROUP BY
     p.annee,
     m.mois,
-    spt.name
+    spt.name,
+    patron_group
 ORDER BY
     m.mois,
     bibliotheque;
