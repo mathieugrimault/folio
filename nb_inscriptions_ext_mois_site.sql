@@ -8,7 +8,7 @@ RETURNS TABLE (
     mois TEXT,
     bibliotheque TEXT,
     groupe TEXT,
-    inscriptions INTEGER,
+    inscriptions INTEGER
 )
 AS
 $$
@@ -48,7 +48,7 @@ GROUP BY
     p.annee,
     m.mois,
     spt.name,
-    patron_group
+    groupe
 ORDER BY
     m.mois,
     bibliotheque;
