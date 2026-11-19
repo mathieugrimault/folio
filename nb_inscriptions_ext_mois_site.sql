@@ -7,7 +7,8 @@ CREATE FUNCTION get_inscriptions_ext_mois_site(
 RETURNS TABLE (
     mois TEXT,
     bibliotheque TEXT,
-    inscriptions INTEGER
+    groupe TEXT,
+    inscriptions INTEGER,
 )
 AS
 $$
@@ -28,7 +29,7 @@ SELECT
         when '503a81cd-6c26-400f-b620-14c08943697c' then 'Extérieurs'
         when '59c0490d-9d96-4ea8-9bcc-43e5a63002e6' then 'Temporaire'
         else 'erreur'
-    end as Groupe,
+    end as groupe,
     COUNT(DISTINCT ut.id) AS inscriptions
 FROM months m
 CROSS JOIN params p
